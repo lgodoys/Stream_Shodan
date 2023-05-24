@@ -17,24 +17,25 @@ LOGGER = logger("SHODAN_LOGGER")
 LOGGER.info('Starting Shodan Stream')
 api = Shodan(API_KEY)
 for banner in api.stream.alert(aid=None, timeout=None, raw=False):
-    keys = banner.keys()
-    if "ssl" in keys:
-        LOGGER.info("SSL key was found. Removing...")
-        del banner["ssl"]
-    if "http" in keys:
-        LOGGER.info("HTTP key was found. Removing...")
-        try:
-            del banner["http"]["favicon"]["data"]
-        except:
-            pass
-        try:
-            del banner["http"]["html"]
-        except:
-            pass
-    LOGGER.info("Shodan Banner is ready")
-    headers = {
-        "Authorization": "Splunk "+HEC_TOKEN
-    }
-    data = json.dumps({'host':'ShodanAPI','sourcetype':'shodan_monitoring','source':'ShodanAPI','event':banner})
-    response = requests.post(url=SPLUNK_URL, headers=headers, data=data, verify=False)
-    print(response.status_code)
+    if len(banner)>2:
+        keys = banner.keys()
+        if "ssl" in keys:
+            LOGGER.info("SSL key was found. Removing...")
+            del banner["ssl"]
+        if "http" in keys:
+            LOGGER.info("HTTP key was found. Removing...")
+            try:
+                del banner["http"]["favicon"]["data"]
+            except:
+                pass
+            try:
+                del banner["http"]["html"]
+            except:
+                pass
+        LOGGER.info("Shodan Banner is ready")
+        headers = {
+            "Authorization": "Splunk "+HEC_TOKEN
+        }
+        data = json.dumps({'host':'ShodanAPI','sourcetype':'shodan_monitoring','source':'ShodanAPI','event':banner})
+        response = requests.post(url=SPLUNK_URL, headers=headers, data=data, verify=False)
+        print(response.status_code)
