@@ -3,7 +3,7 @@ from utils.Exceptions import *
 from utils.helper import *
 
 config = read_config()
-LOGGER = logger("SHODAN_LOGGER")
+LOGGER = logger("SHODANSTATUS_LOGGER")
 PROCNAME = config["default"]["PROCNAME"]
 CMD1 = config["default"]["COMMAND1"]
 CMD2 = config["default"]["COMMAND2"]
