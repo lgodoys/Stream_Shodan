@@ -31,6 +31,7 @@ MANIFEST
 *.manifest
 *.spec
 config.ini
+config/config.ini
 
 # Installer logs
 pip-log.txt
