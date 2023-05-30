@@ -4,7 +4,9 @@ Stream Shodan is a Python application that allows to Splunk manager to push data
 
 ## Installation
 
-Download this package from GitHub or clone this repository to your destination folder using git clone command
+Download this package from GitHub or clone this repository to your destination folder using git clone command.
+
+This app requires Shodan library from pypi. Install it before configure the Stream Shodan app.
 
 ## Configuration
 
