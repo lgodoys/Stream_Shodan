@@ -25,7 +25,7 @@ The config file will allows the app to connect to Stream Shodan using the author
 
 Configure your own Cronjob to start "shodanStatus.py" file. Do not set a cronjob for main.py script, may cause multiple instances of the script and may consume a lot of resources from your environment
 
-## Recomended environment
+## Recommended environment
 
 The app was developed on a Linux environment. It is fully recommended to use a Linux environment, for compatibility. In case you need to use a Windows environment, you will need to modify commands and PROCNAME lines, and set your folder based on Windows environment.
 
